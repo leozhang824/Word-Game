@@ -109,7 +109,25 @@ function userPick(event){
     initializeRound();
   }
 }
+function timer(){
+  var sec = 30;
+  var timer = setInterval(function(){
+      document.getElementById("TimerDisplay").innerHTML='00:'+ sec;
+      sec--;
+      if (sec < 0) {
+          clearInterval(timer);
+      }
+  }, 1000);
+}
 
+
+// document.onkeyup = function(event){
+//   let key = event.key;
+//   if(key === true){
+//     timer();
+//   }
+
+// }
 
 
 
