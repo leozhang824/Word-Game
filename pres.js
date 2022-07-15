@@ -65,16 +65,16 @@ function userPick(event){
     return;
   }
   //if the letter can be found in the word
-  if(chosenWord.indexOf(lowerCasePick) !== -1) {
+  if(selectedHero.indexOf(lowerCasePick) !== -1) {
     //if user has already guessed this letter
     if(blanksAndSuccesses.some(letter => letter === lowerCasePick)) {
       //don't do anything
       return;
     }
     //walk through the word to locate the match(es)
-    for(var i = 0; i < chosenWord.length; i++){
+    for(var i = 0; i < selectedHero.length; i++){
       //if we find a matching letter in this position
-      if(lowerCasePick == chosenWord[i]) {
+      if(lowerCasePick == selectedHero[i]) {
         //replace the blank in this position with the letter
         blanksAndSuccesses[i] = lowerCasePick;
         //decrement the number of blanks
