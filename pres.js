@@ -121,14 +121,6 @@ function timer(){
 }
 
 
-// document.onkeyup = function(event){
-//   let key = event.key;
-//   if(key === true){
-//     timer();
-//   }
-
-// }
-
 
 
 
