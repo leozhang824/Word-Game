@@ -108,26 +108,26 @@ function userPick(event){
     //reset for another round
     initializeRound();
   }
-}
+}var sec = 30;
 function timer(){
-  var sec = 30;
+  if(sec === 30){
   var timer = setInterval(function(){
+    if(sec < 10){
+      document.getElementById("TimerDisplay").innerHTML='00:0'+ sec;
+    }else{
       document.getElementById("TimerDisplay").innerHTML='00:'+ sec;
+    }
       sec--;
       if (sec < 0) {
           clearInterval(timer);
       }
   }, 1000);
+  }
+  
 }
 
 
-// document.onkeyup = function(event){
-//   let key = event.key;
-//   if(key === true){
-//     timer();
-//   }
 
-// }
 
 
 
