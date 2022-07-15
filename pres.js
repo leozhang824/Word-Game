@@ -1,10 +1,10 @@
 // GLOBAL VARIABLES (accessible by all functions)
 // ==================================================================================================
 // Array of Word Options (all lowercase)
-var wordsList = ["cecilia", "charly", "george", "glauk", "hunter", "jason",
-  "shane", "claudio", "dartaniel", "mike"];
-// Solution will be held here.
-var chosenWord = "";
+let heroesList = ["Captain America", "Iron Man", "Thor", "Hulk", "Spider-Man", "Black Widow", "Black Panther", "Dr. Strange", "Hawkeye", "Captain Marvel", "Star-Lord"];
+
+selectedHero = heroesList[Math.floor(Math.random() * heroesList.length)];
+
 // This will be the number of blanks we show based on the solution
 var numBlanks = 0;
 // An array that describes the state of which letters the user has guessed correctly so far. For example, if the chosen word is "neena" and the only correct letter that the user has picked is "n", then the value of this array will be ["n", "_", "_", "n", "_"]
@@ -25,10 +25,8 @@ initializeRound();
 document.addEventListener("keyup", userPick, false);
 //a function that sets up a round of the game
 function initializeRound() {
-  //pick a word at random
-  chosenWord = wordsList[Math.floor(Math.random() * wordsList.length)];
   // This will be the number of blanks we show based on the solution
-  numBlanks = chosenWord.length;
+  numBlanks = selectedHero.length;
   // make blanksAndSuccesses an array containing as many underscores as there are letters in the chosen word
   blanksAndSuccesses = [];
   for(var i = 0; i < numBlanks; i++) {
