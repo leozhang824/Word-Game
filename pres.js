@@ -121,7 +121,6 @@ function userPick(event){
   if(numBlanks == 0) {
     //reset for another round
     window.location.href = "end.html"
-    console.log(chosenHero)
   //if there are no more guesses left
   } else if (numGuesses == 0) {
     //reset for another round
