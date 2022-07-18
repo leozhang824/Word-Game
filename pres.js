@@ -1,7 +1,7 @@
 // GLOBAL letIABLES (accessible by all functions)
 // ==================================================================================================
 // Array of Word Options (all lowercase)
-let heroesList = ["captain america", "iron man", "thor", "hulk", "spider man", "black widow", "black panther", "dr. Strange", "hawkeye", "captain marvel", "star lord"];
+let heroesList = ["captain america", "iron man", "thor", "hulk", "spider man", "black widow", "black panther", "doctor strange", "hawkeye", "captain marvel", "star lord"];
 // Solution will be held here.
 let chosenHero = "";
 // This will be the number of blanks we show based on the solution
@@ -28,7 +28,12 @@ function initializeRound() {
 
   chosenHero = heroesList[heroIndex];
   // This will be the number of blanks we show based on the solution
-  numBlanks = chosenHero.length;
+  if (chosenHero.includes(" ")) {
+    numBlanks = chosenHero.length - 1;
+  }
+  else {
+    numBlanks = chosenHero.length;
+  }
   // make blanksAndSuccesses an array containing as many underscores as there are letters in the chosen word
   blanksAndSuccesses = [];
 
@@ -36,6 +41,7 @@ function initializeRound() {
       for (let i = 0; i < chosenHero.length; i++) {
         if (chosenHero[i] === " "){
           blanksAndSuccesses.push("<span class='blankSpaces'></span>")
+
         } else {
           blanksAndSuccesses.push("_ ")
         }
@@ -44,12 +50,12 @@ function initializeRound() {
     }
     else {
       for (let i = 0; i < chosenHero.length; i++) {
-        blanksAndSuccesses.push("_");
+        blanksAndSuccesses.push("_ ");
       }
     }
   
   //write the blanks on the page
-  wordBlanks.innerHTML = blanksAndSuccesses.join("");
+  wordBlanks.innerHTML = blanksAndSuccesses.join(" ");
   //reset the number of wrong guesses allowed to 9
   numGuesses = 9;
   //write the number of wrong guesses allowed on the page
@@ -97,7 +103,9 @@ function userPick(event){
         //decrement the number of blanks
         numBlanks--;
       }
+      console.log(numBlanks)
     }
+  
     //update the page with a representation of the current state of blanksAndSuccesses
     wordBlanks.innerHTML = blanksAndSuccesses.join(" ");
   //if we can't find the pick in the word
@@ -107,23 +115,21 @@ function userPick(event){
     //update the page with the number of guesses left
     guessesLeft.textContent = numGuesses.toString();
     //update the wrong guesses
-    wrongGuesses.textContent += lowerCasePick; 
+    wrongGuesses.textContent += lowerCasePick;
   }
-  //detect if the user has won or lost
-  //if the user has guessed the word there will be no more blanks left
+  console.log(numBlanks)
   if(numBlanks == 0) {
-    //tally the wins
-    winCounter++;
     //reset for another round
-    initializeRound();
+    window.location.href = "end.html"
+    console.log(chosenHero)
   //if there are no more guesses left
   } else if (numGuesses == 0) {
-    //tally the losses
-    lossCounter++;
     //reset for another round
-    initializeRound();
+    window.location.href = "end.html"
   }
-}let sec = 30;
+}
+  
+let sec = 30;
 function timer(){
   if(sec === 30){
   let timer = setInterval(function(){
@@ -135,7 +141,7 @@ function timer(){
       sec--;
       if (sec < 0) {
           clearInterval(timer);
-          wordBlanks.textContent = chosenHero;
+          window.location.href = "end.html?"+chosenHero
       }
   }, 1000);
   }
@@ -148,6 +154,3 @@ if (urlArray.at(-1) === "pres2.html") {
 
   timer()
 }
-
-
-
