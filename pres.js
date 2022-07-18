@@ -1,39 +1,55 @@
-// GLOBAL VARIABLES (accessible by all functions)
+// GLOBAL letIABLES (accessible by all functions)
 // ==================================================================================================
 // Array of Word Options (all lowercase)
-let heroesList = ["Captain America", "Iron Man", "Thor", "Hulk", "Spider-Man", "Black Widow", "Black Panther", "Dr. Strange", "Hawkeye", "Captain Marvel", "Star-Lord"];
-
-selectedHero = heroesList[Math.floor(Math.random() * heroesList.length)];
-
+let heroesList = ["captain america", "iron man", "thor", "hulk", "spider man", "black widow", "black panther", "dr. Strange", "hawkeye", "captain marvel", "star Lord"];
+// Solution will be held here.
+let chosenHero = "";
 // This will be the number of blanks we show based on the solution
-var numBlanks = 0;
-// An array that describes the state of which letters the user has guessed correctly so far. For example, if the chosen word is "neena" and the only correct letter that the user has picked is "n", then the value of this array will be ["n", "_", "_", "n", "_"]
-var blanksAndSuccesses = [];
-// identify the elements to report the state of the variables
-var wordBlanks = document.getElementById("word-blanks");
-var wrongGuesses = document.getElementById("wrong-guesses");
-var guessesLeft = document.getElementById("guesses-left");
-var winCounterSpan = document.getElementById("win-counter");
-var lossCounterSpan = document.getElementById("loss-counter");
+let numBlanks = 0;
+// An array that describes the state of which letters the user has guessed correctly so far. For example, if the chosen word is "neena" and the only correct letter that the user has picked is "n", then the value of this array will be ["n", "_", "_", "n", "_"
+// identify the elements to report the state of the letiables
+let wordBlanks = document.getElementById("word-blanks");
+let wrongGuesses = document.getElementById("wrong-guesses");
+let guessesLeft = document.getElementById("guesses-left");
+let winCounterSpan = document.getElementById("win-counter");
+let lossCounterSpan = document.getElementById("loss-counter");
 // Game counters
-var winCounter = 0;
-var lossCounter = 0;
-var numGuesses = 9;
+let winCounter = 0;
+let lossCounter = 0;
+let numGuesses = 9;
 //set up for the first round
 initializeRound();
 //make the browser listen for the user to press a letter
 document.addEventListener("keyup", userPick, false);
 //a function that sets up a round of the game
 function initializeRound() {
+  //pick a word at random
+  let heroIndex = Math.floor(Math.random() * heroesList.length)
+
+  chosenHero = heroesList[heroIndex];
   // This will be the number of blanks we show based on the solution
-  numBlanks = selectedHero.length;
+  numBlanks = chosenHero.length;
   // make blanksAndSuccesses an array containing as many underscores as there are letters in the chosen word
   blanksAndSuccesses = [];
-  for(var i = 0; i < numBlanks; i++) {
-    blanksAndSuccesses.push("_");
-  }
+
+    if (heroesList[heroIndex].includes(" ")) {
+      for (let i = 0; i < chosenHero.length; i++) {
+        if (chosenHero[i] === " "){
+          blanksAndSuccesses.push("<span class='blankSpaces'></span>")
+        } else {
+          blanksAndSuccesses.push("_ ")
+        }
+      }
+      console.log(blanksAndSuccesses)
+    }
+    else {
+      for (let i = 0; i < chosenHero.length; i++) {
+        blanksAndSuccesses.push("_");
+      }
+    }
+  
   //write the blanks on the page
-  wordBlanks.textContent = blanksAndSuccesses.join(" ");
+  wordBlanks.innerHTML = blanksAndSuccesses.join("");
   //reset the number of wrong guesses allowed to 9
   numGuesses = 9;
   //write the number of wrong guesses allowed on the page
@@ -44,6 +60,40 @@ function initializeRound() {
   winCounterSpan.textContent = winCounter.toString();
   //update the page with the current number of losses
   lossCounterSpan.textContent = lossCounter.toString();
+}
+
+if (chosenHero === "iron man") {
+  
+}
+else if (chosenHero === "captain america") {
+
+}
+else if (chosenHero === "thor") {
+
+}
+else if (chosenHero === "hulk") {
+
+}
+else if (chosenHero === "spider man") {
+
+}
+else if (chosenHero === "black widow") {
+
+}
+else if (chosenHero === "black panther") {
+
+}
+else if (chosenHero === "dr. strange") {
+
+}
+else if (chosenHero === "hawkeye") {
+
+}
+else if (chosenHero === "captain marvel") {
+
+}
+else {
+
 }
 //a function to handle the event when the user presses a key
 function userPick(event){
@@ -65,16 +115,16 @@ function userPick(event){
     return;
   }
   //if the letter can be found in the word
-  if(chosenWord.indexOf(lowerCasePick) !== -1) {
+  if(chosenHero.indexOf(lowerCasePick) !== -1) {
     //if user has already guessed this letter
     if(blanksAndSuccesses.some(letter => letter === lowerCasePick)) {
       //don't do anything
       return;
     }
     //walk through the word to locate the match(es)
-    for(var i = 0; i < chosenWord.length; i++){
+    for(let i = 0; i < chosenHero.length; i++){
       //if we find a matching letter in this position
-      if(lowerCasePick == chosenWord[i]) {
+      if(lowerCasePick == chosenHero[i]) {
         //replace the blank in this position with the letter
         blanksAndSuccesses[i] = lowerCasePick;
         //decrement the number of blanks
@@ -82,7 +132,7 @@ function userPick(event){
       }
     }
     //update the page with a representation of the current state of blanksAndSuccesses
-    wordBlanks.textContent = blanksAndSuccesses.join(" ");
+    wordBlanks.innerHTML = blanksAndSuccesses.join(" ");
   //if we can't find the pick in the word
   } else {
     //decrement the number of guesses left
@@ -107,12 +157,3 @@ function userPick(event){
     initializeRound();
   }
 }
-
-
-
-
-
-
-
-
-
