@@ -156,4 +156,28 @@ function userPick(event){
     //reset for another round
     initializeRound();
   }
+}var sec = 30;
+function timer(){
+  if(sec === 30){
+  var timer = setInterval(function(){
+    if(sec < 10){
+      document.getElementById("TimerDisplay").innerHTML='00:0'+ sec;
+    }else{
+      document.getElementById("TimerDisplay").innerHTML='00:'+ sec;
+    }
+      sec--;
+      if (sec < 0) {
+          clearInterval(timer);
+      }
+  }, 1000);
+  }
+  
 }
+
+
+
+
+
+
+
+
