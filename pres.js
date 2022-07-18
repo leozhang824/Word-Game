@@ -1,7 +1,7 @@
 // GLOBAL letIABLES (accessible by all functions)
 // ==================================================================================================
 // Array of Word Options (all lowercase)
-let heroesList = ["captain america", "iron man", "thor", "hulk", "spider man", "black widow", "black panther", "dr. Strange", "hawkeye", "captain marvel", "star Lord"];
+let heroesList = ["captain america", "iron man", "thor", "hulk", "spider man", "black widow", "black panther", "dr. Strange", "hawkeye", "captain marvel", "star lord"];
 // Solution will be held here.
 let chosenHero = "";
 // This will be the number of blanks we show based on the solution
@@ -62,39 +62,6 @@ function initializeRound() {
   lossCounterSpan.textContent = lossCounter.toString();
 }
 
-if (chosenHero === "iron man") {
-  
-}
-else if (chosenHero === "captain america") {
-
-}
-else if (chosenHero === "thor") {
-
-}
-else if (chosenHero === "hulk") {
-
-}
-else if (chosenHero === "spider man") {
-
-}
-else if (chosenHero === "black widow") {
-
-}
-else if (chosenHero === "black panther") {
-
-}
-else if (chosenHero === "dr. strange") {
-
-}
-else if (chosenHero === "hawkeye") {
-
-}
-else if (chosenHero === "captain marvel") {
-
-}
-else {
-
-}
 //a function to handle the event when the user presses a key
 function userPick(event){
   //determine the letter that the user pressed
@@ -156,10 +123,10 @@ function userPick(event){
     //reset for another round
     initializeRound();
   }
-}var sec = 30;
+}let sec = 30;
 function timer(){
   if(sec === 30){
-  var timer = setInterval(function(){
+  let timer = setInterval(function(){
     if(sec < 10){
       document.getElementById("TimerDisplay").innerHTML='00:0'+ sec;
     }else{
@@ -168,16 +135,19 @@ function timer(){
       sec--;
       if (sec < 0) {
           clearInterval(timer);
+          wordBlanks.textContent = chosenHero;
       }
   }, 1000);
   }
   
 }
 
+let url = window.location.href;
+let urlArray = url.split("/");
+if (urlArray.at(-1) === "pres2.html") {
 
-
-
-
+  timer()
+}
 
 
 
