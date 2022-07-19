@@ -1,7 +1,7 @@
 // GLOBAL letIABLES (accessible by all functions)
 // ==================================================================================================
 // Array of Word Options (all lowercase)
-let heroesList = ["captain america", "iron man", "thor", "hulk", "spider man", "black widow", "black panther", "dr. Strange", "hawkeye", "captain marvel", "star Lord"];
+let heroesList = ["captain america", "iron man", "thor", "hulk", "spider man", "black widow", "black panther", "doctor strange", "hawkeye", "captain marvel", "star lord"];
 // Solution will be held here.
 let chosenHero = "";
 // This will be the number of blanks we show based on the solution
@@ -171,6 +171,8 @@ function timer(){
       }
   }, 1000);
   }
+
+
   
 }
 
